@@ -1,50 +1,28 @@
-package com.myservices.sqlserver.entity;
+package com.myservices.domain;
 
 import java.util.List;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * This Book class is entity class to store,retrieve,update Book Details.
+ * This BookOP is domain class
  * 
  * @author Sanjay Bankar
  *
  */
-
-@Entity
-@Table(name="BOOK_INFO")
 public class Book {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID",nullable=false)
-	private Integer id;
-	
-	@Column(name="BOOK_NBR",nullable=false)
+	@JsonProperty("book-number")
 	private String bookNumber;
 	
-	@Column(name="BOOK_NAME",nullable=false)
+	@JsonProperty("book-name")
 	private String bookName;
 	
-	@Column(name="BOOK_DESC",nullable=false)
+	@JsonProperty("book-desc")
 	private String bookDescription;
 	
-	@OneToMany(mappedBy="book",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JsonProperty("alternate-book")
 	private List<AlternateBook> alternateBooks;
-
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the bookNumber
@@ -101,6 +79,5 @@ public class Book {
 	public void setAlternateBooks(List<AlternateBook> alternateBooks) {
 		this.alternateBooks = alternateBooks;
 	}
-	
 	
 }

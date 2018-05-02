@@ -1,4 +1,4 @@
-package com.myservices.sqlserver.entity;
+package com.myservices.mysql.entity;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="BOOK_INFO")
-public class AlternateBook {
+@Table(name="OTHER_INFO")
+public class AlternateBookInfo {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,11 +21,11 @@ public class AlternateBook {
 	
 	@Column(name="BOOK_NAME",nullable=false)
 	private String bookName;
-	
+
 	@ManyToOne
 	@JoinColumn(name="BOOK_ID")
-	private Book book;
-
+	private BookInfo book;
+	
 	/**
 	 * @return the id
 	 */
@@ -66,6 +66,20 @@ public class AlternateBook {
 	 */
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
+	}
+
+	/**
+	 * @return the book
+	 */
+	public BookInfo getBook() {
+		return book;
+	}
+
+	/**
+	 * @param book the book to set
+	 */
+	public void setBook(BookInfo book) {
+		this.book = book;
 	}
 	
 	

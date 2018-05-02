@@ -20,7 +20,7 @@ public class BookInfo {
 	@Column(name="ID",nullable=false)
 	private Integer id;
 	
-	@Column(name="BOOK_NBR",nullable=false)
+	@Column(name="BOOK_NBR",nullable=false,unique=true)
 	private String bookNumber;
 	
 	@Column(name="BOOK_NAME",nullable=false)
@@ -29,8 +29,8 @@ public class BookInfo {
 	@Column(name="BOOK_DESC",nullable=false)
 	private String bookDescription;
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private List<AlternateBook> alternateBooks;
+	@OneToMany(mappedBy="book",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<AlternateBookInfo> alternateBooks;
 
 	/**
 	 * @return the id
@@ -91,14 +91,14 @@ public class BookInfo {
 	/**
 	 * @return the alternateBooks
 	 */
-	public List<AlternateBook> getAlternateBooks() {
+	public List<AlternateBookInfo> getAlternateBooks() {
 		return alternateBooks;
 	}
 
 	/**
 	 * @param alternateBooks the alternateBooks to set
 	 */
-	public void setAlternateBooks(List<AlternateBook> alternateBooks) {
+	public void setAlternateBooks(List<AlternateBookInfo> alternateBooks) {
 		this.alternateBooks = alternateBooks;
 	}
 	
